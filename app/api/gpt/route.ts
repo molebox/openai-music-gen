@@ -24,7 +24,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     const requestData = {
       ...data,
       'messages': [
-        {'role': 'user', 'content': query }
+        { 'role': 'user', 'content': query }
       ],
       functions: [
         {
@@ -94,8 +94,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
     })
 
     const json = await response.json()
+    console.log('json: ', json)
     let choice = json.choices[0]
-    
+
     const { function_call } = choice.message
     console.log('function_call: ', function_call)
     if (function_call) {
